@@ -1,7 +1,7 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
-import pkg from "./package.json" assert { type: "json" };
+import pkg from "./package.json" with { type: "json" };
 import generatePackageJson from "rollup-plugin-generate-package-json";
 import dts from "vite-plugin-dts";
 import tailwindcss from "@tailwindcss/vite";
