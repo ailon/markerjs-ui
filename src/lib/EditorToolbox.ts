@@ -207,7 +207,11 @@ export class EditorToolbox extends BaseToolbar {
         break;
       }
       case "zoom-reset": {
-        this._markerArea.zoomLevel = 1;
+        if (this._markerArea.autoZoomIn || this._markerArea.autoZoomOut) {
+          this._markerArea.autoZoom();
+        } else {
+          this._markerArea.zoomLevel = 1;
+        }
         break;
       }
     }

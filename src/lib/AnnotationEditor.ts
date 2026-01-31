@@ -87,6 +87,14 @@ export interface AnnotationEditorSettings {
      */
     height?: number;
   };
+  /**
+   * When set to true, the editor will automatically zoom in if the image is smaller than the viewport.
+   */
+  autoZoomIn?: boolean;
+  /**
+   * When set to true, the editor will automatically zoom out if the image is larger than the viewport.
+   */
+  autoZoomOut?: boolean;
 }
 
 /**
@@ -256,6 +264,15 @@ export class AnnotationEditor extends HTMLElement {
   private addMarkerArea() {
     if (this.targetImage && this._markerAreaContainer && this._markerArea) {
       this._markerArea.targetImage = this.targetImage;
+
+      // Apply auto-zoom settings
+      if (this._settings.autoZoomIn !== undefined) {
+        this._markerArea.autoZoomIn = this._settings.autoZoomIn;
+      }
+      if (this._settings.autoZoomOut !== undefined) {
+        this._markerArea.autoZoomOut = this._settings.autoZoomOut;
+      }
+
       this._markerAreaContainer.appendChild(this._markerArea);
     }
   }

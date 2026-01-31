@@ -16,6 +16,8 @@ editor.settings.rendererSettings.markersOnly = true;
 // editor.settings.rendererSettings.naturalSize = true;
 // editor.settings.rendererSettings.width = 50;
 // editor.settings.rendererSettings.height = 600;
+editor.settings.autoZoomIn = true;
+editor.settings.autoZoomOut = true;
 
 editor.addEventListener("editorsave", (event) => {
   console.log("Editor state:", event.detail.state);
