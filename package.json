@@ -30,7 +30,7 @@
     "vite-plugin-static-copy": "^2.3.1"
   },
   "dependencies": {
-    "@markerjs/markerjs3": "^3.5.6"
+    "@markerjs/markerjs3": "^3.9.0"
   },
   "exports": {
     ".": {
