@@ -5,6 +5,7 @@ import { ToolbarAction } from "./models/toolbar";
 import ZoomInIcon from "@/assets/icons/plus.svg?raw";
 import ZoomOutIcon from "@/assets/icons/minus.svg?raw";
 import ZoomResetIcon from "@/assets/icons/relation-one-to-one.svg?raw";
+import ZoomToFitIcon from "@/assets/icons/maximize.svg?raw";
 
 export class ViewerToolbar extends BaseToolbar {
   private _toolbarContainer?: HTMLDivElement;
@@ -13,6 +14,7 @@ export class ViewerToolbar extends BaseToolbar {
   private _zoomInButton?: HTMLButtonElement;
   private _zoomOutButton?: HTMLButtonElement;
   private _zoomResetButton?: HTMLButtonElement;
+  private _zoomToFitButton?: HTMLButtonElement;
 
   protected _markerView: MarkerView;
 
@@ -42,7 +44,7 @@ export class ViewerToolbar extends BaseToolbar {
       this._zoomOutButton = this.createActionButton(
         "Zoom Out",
         "zoom-out",
-        ZoomOutIcon
+        ZoomOutIcon,
       );
       this._zoomOutButton.classList.add("join-item");
       zoomGroup.appendChild(this._zoomOutButton);
@@ -50,15 +52,23 @@ export class ViewerToolbar extends BaseToolbar {
       this._zoomResetButton = this.createActionButton(
         "Zoom Reset",
         "zoom-reset",
-        ZoomResetIcon
+        ZoomResetIcon,
       );
       this._zoomResetButton.classList.add("join-item");
       zoomGroup.appendChild(this._zoomResetButton);
 
+      this._zoomToFitButton = this.createActionButton(
+        "Zoom to Fit",
+        "zoom-to-fit",
+        ZoomToFitIcon,
+      );
+      this._zoomToFitButton.classList.add("join-item");
+      zoomGroup.appendChild(this._zoomToFitButton);
+
       this._zoomInButton = this.createActionButton(
         "Zoom In",
         "zoom-in",
-        ZoomInIcon
+        ZoomInIcon,
       );
       this._zoomInButton.classList.add("join-item");
       zoomGroup.appendChild(this._zoomInButton);
@@ -70,13 +80,13 @@ export class ViewerToolbar extends BaseToolbar {
   protected createActionButton(
     title: string,
     action: ToolbarAction,
-    icon: string
+    icon: string,
   ) {
     return super.createActionButton(
       title,
       action,
       icon,
-      this.handleActionButtonClick
+      this.handleActionButtonClick,
     );
   }
 
@@ -94,6 +104,10 @@ export class ViewerToolbar extends BaseToolbar {
       }
       case "zoom-reset": {
         this._markerView.zoomLevel = 1;
+        break;
+      }
+      case "zoom-to-fit": {
+        this._markerView.autoZoom();
         break;
       }
     }

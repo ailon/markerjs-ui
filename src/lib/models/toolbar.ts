@@ -11,7 +11,8 @@ export type ToolbarAction =
   | "redo"
   | "zoom-in"
   | "zoom-out"
-  | "zoom-reset";
+  | "zoom-reset"
+  | "zoom-to-fit";
 
 export type MarkerTypeItem = {
   icon: string;

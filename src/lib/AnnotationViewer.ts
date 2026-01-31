@@ -119,6 +119,11 @@ export class AnnotationViewer extends HTMLElement {
   private addMarkerView() {
     if (this.targetImage && this._markerViewContainer && this._markerView) {
       this._markerView.targetImage = this.targetImage;
+
+      // Enable auto-zoom
+      this._markerView.autoZoomIn = true;
+      this._markerView.autoZoomOut = true;
+
       this._markerViewContainer.appendChild(this._markerView);
     }
   }
